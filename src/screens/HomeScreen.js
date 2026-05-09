@@ -46,14 +46,20 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <FlatList
-        data={products}
-        numColumns={2}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <ProductCard item={item} navigation={navigation} />
-        )}
-        showsVerticalScrollIndicator={false}
-      />
+       data={products}
+  numColumns={2}
+  keyExtractor={(item) => item.id.toString()}
+  columnWrapperStyle={{
+    justifyContent: 'space-between',
+  }}
+  renderItem={({ item }) => (
+    <ProductCard
+      item={item}
+      navigation={navigation}
+    />
+  )}
+  showsVerticalScrollIndicator={false}
+/> 
     </View>
   );
 };

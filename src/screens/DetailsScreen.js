@@ -8,34 +8,36 @@ import {
   Button,
 } from 'react-native';
 import { CartContext } from '../context/CartContext';
-
 const DetailsScreen = ({ route }) => {
-  const { item } = route.params;
+  const { product } = route.params;
   const { addToCart } = useContext(CartContext);
-
   return (
     <ScrollView style={styles.container}>
-      <Image source={{ uri: item.image }} style={styles.image} />
-
+      <Image
+        source={{ uri: product.image }}
+        style={styles.image}
+      />
       <View style={styles.content}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.price}>₹ {item.price}</Text>
-
-        <Text style={styles.description}>
-          {item.description}
+        <Text style={styles.title}>
+          {product.title}
         </Text>
-
+        <Text style={styles.price}>
+          ₹ {product.price}
+        </Text>
+        <Text style={styles.description}>
+          {product.description}
+        </Text>
         <View style={styles.button}>
-          <Button title="Add to Cart" onPress={() => addToCart(item)} />
+          <Button
+            title="Add to Cart"
+            onPress={() => addToCart(product)}
+          />
         </View>
       </View>
     </ScrollView>
   );
 };
-
 export default DetailsScreen;
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -62,9 +64,9 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 14,
     color: '#444',
-    marginBottom: 20,
+    lineHeight: 22,
   },
   button: {
-    marginTop: 10,
+    marginTop: 20,
   },
 });
